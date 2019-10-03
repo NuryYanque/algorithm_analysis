@@ -1,26 +1,37 @@
-class Graph:
-    graph_dict = {}
+from graph import Graph
+from queue import Queue
 
-    def addEdge(self, node, neighbour):
-        if node not in self.graph_dict:
-            self.graph_dict[node] = [neighbour]
-        else:
-            self.graph_dict[node].append(neighbour)
+def BFS(graph, s): 
     
-    def show_edges(self):
-        for node in self.graph_dict:
-            for neighbour in self.graph_dict[node]:
-                print(node,": ", neighbour)
+    # Mark all the vertices as not visited
+    visited = [False] * (len(graph.graph_dict))
+    
+    Q = Queue()
+    Q.put(s)
 
+    visited[s] = True
+
+    while not Q.empty():
+        # Deque
+        u = Q.get()
+        print(u, end=" ")
+        # Get adjanced vertices from deque vertex u 
+        for v in graph.graph_dict[u]:
+            # if adjanced vertex has not been visited
+            if visited[v] == False:
+                # mark as visited
+                visited[v] = True
+                # enqueue it
+                Q.put(v)    
 
 g = Graph()
-g.addEdge("1", "2")
-g.addEdge("1", "3")
-g.addEdge("2", "3")
-g.addEdge("2", "1")
-g.addEdge("3", "1")
-g.addEdge("3", "2")
-g.addEdge("3", "4")
-g.addEdge("4", "3")
+g.addEdge(0, 1) 
+g.addEdge(0, 2) 
+g.addEdge(1, 2) 
+g.addEdge(2, 0) 
+g.addEdge(2, 3) 
+g.addEdge(3, 3) 
 
-g.show_edges()
+s = 2
+path = BFS(g, s)
+print(path)
