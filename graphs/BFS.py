@@ -33,5 +33,4 @@ g.addEdge(2, 3)
 g.addEdge(3, 3) 
 
 s = 2
-path = BFS(g, s)
-print(path)
+BFS(g, s)
