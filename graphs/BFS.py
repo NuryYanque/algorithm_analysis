@@ -57,5 +57,4 @@ def print_path(s, v):
         print_path(s, pi[v])
         print(v, end=' ')
 
-dfs_tree = print_path(s, 3)
-print(dfs_tree)
+print_path(s, 3)
