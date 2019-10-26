@@ -11,12 +11,12 @@ def dijkstra(G, s):
     d[s] = 0
     q = Q.PriorityQueue()
     for u in G:
-        q.put(d[u])
+        q.put((d[u],u))
     while not q.empty():
-        u = q.get()
-        print(u)
+        _, u  = q.get()
+        # u = u_tuple[1]        
         for v in G[u]:
-            if v in q and d[v] > d[u] + G[u][v]:
+            if d[v] > d[u] + G[u][v]:
                 pi[v] = u
                 d[v] = d[u] + G[u][v]
     return pi, d
@@ -31,3 +31,6 @@ graph = {'s': {'a': 2, 'b': 1},
          't': {'c': 3, 'd': 5}}
 
 pi, d = dijkstra(graph, 's')
+
+print(pi)
+print(d)
