@@ -13,8 +13,7 @@ def dijkstra(G, s):
     for u in G:
         q.put((d[u],u))
     while not q.empty():
-        _, u  = q.get()
-        # u = u_tuple[1]        
+        _, u  = q.get()           
         for v in G[u]:
             if d[v] > d[u] + G[u][v]:
                 pi[v] = u
