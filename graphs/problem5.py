@@ -26,7 +26,7 @@ def dijkstra(G, S, T):
             if d[v] > d[u] + G[u][v]:
                 d[v] = d[u] + G[u][v]
                 pi[v] = u
-        
+                q.put((d[v],v))
     print(d, pi, d[u_in_T])
 
 

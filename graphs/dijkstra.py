@@ -11,13 +11,15 @@ def dijkstra(G, s):
     d[s] = 0
     q = Q.PriorityQueue()
     for u in G:
-        q.put((d[u],u))
+        q.put((d[u],u))    
     while not q.empty():
-        _, u  = q.get()           
+        _, u  = q.get() 
+        print(u)         
         for v in G[u]:
             if d[v] > d[u] + G[u][v]:
                 pi[v] = u
                 d[v] = d[u] + G[u][v]
+                q.put((d[v],v))
     return pi, d
 
 
